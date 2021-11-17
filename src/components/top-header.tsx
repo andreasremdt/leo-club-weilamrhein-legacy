@@ -29,7 +29,6 @@ const Link = styled.a`
   &:hover,
   &:focus-visible {
     color: var(--gray-500);
-    outline: none;
   }
 `;
 
