@@ -1,15 +1,31 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    title: "Leo-Club Weil am Rhein",
+    description:
+      "Wir sind Jugendliche und Erwachsene und engagieren uns für das Wohl von benachteiligten Menschen, etwa aus Kinder- oder Pflegeheimen.",
+    siteUrl: "https://leo-club-weilamrhein.de",
+    socialLinks: [
+      {
+        icon: "facebook",
+        title: "Der Leo-Club auf Facebook",
+        path: "https://www.facebook.com/pages/Leo-Club-Weil-am-Rhein/189139934566022",
+      },
+      {
+        icon: "youtube",
+        title: "Der Leo-Club auf YouTube",
+        path: "https://www.youtube.com/channel/UCvhLu58b0UpRoCAseidSn9Q/",
+      },
+      {
+        icon: "instagram",
+        title: "Der Leo-Club auf Instagram",
+        path: "https://www.instagram.com/leoclubweilamrhein/",
+      },
+      {
+        icon: "rss",
+        title: "Der Leo-Club als RSS Feed",
+        path: "/feed.xml",
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -118,8 +134,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-styled-components",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/layouts/default.tsx"),
+        },
+      },
+    },
   ],
 };
