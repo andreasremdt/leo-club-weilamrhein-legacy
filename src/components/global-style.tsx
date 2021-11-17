@@ -31,10 +31,25 @@ const GlobalStyle = createGlobalStyle`
     height: auto;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: unset;
+    line-height: 1.1;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
     outline: none;
+  }
+
+  p a, td a {
+    transition: border-color .1s linear;
+    border-bottom: 2px solid var(--yellow);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--gray-500);
+    }
   }
 
   table {
