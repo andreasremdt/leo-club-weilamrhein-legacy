@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
     margin: unset;
     font: 400 15px/1.6 var(--font-serif);
     color: var(--gray-500);
+    background-color: var(--gray-100);
   }
 
   img {
@@ -37,6 +38,18 @@ const GlobalStyle = createGlobalStyle`
 
   table {
     border-collapse: collapse;
+  }
+
+  input {
+    width: 100%;
+    font: inherit;
+    outline: none;
+  }
+
+  button {
+    font: inherit;
+    outline: none;
+    cursor: pointer;
   }
 `;
 

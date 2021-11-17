@@ -1,5 +1,6 @@
 import * as React from "react";
 import { PageProps } from "gatsby";
+import * as types from "styled-components/cssprop";
 
 import Navigation from "../components/navigation";
 import TopHeader from "../components/top-header";
