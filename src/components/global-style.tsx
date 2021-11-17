@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: unset;
-    font: 400 15px/1.6 var(--font-serif);
+    font: 400 15px/1.8 var(--font-serif);
     color: var(--gray-500);
     background-color: var(--gray-100);
   }
@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin-top: unset;
+    margin-top: 2rem;
     line-height: 1.1;
   }
 
@@ -54,6 +54,19 @@ const GlobalStyle = createGlobalStyle`
 
   table {
     border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  th {
+    text-align: left;
+    border-bottom: 2px solid var(--gray-200);
+    padding: .4rem 1rem;
+  }
+
+  td {
+    border-top: 1px solid var(--gray-200);
+    padding: .4rem 1rem;
   }
 
   input {

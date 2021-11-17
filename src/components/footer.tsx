@@ -53,7 +53,7 @@ const InnerWrapper = styled(Container)`
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   gap: 1.5rem;
-  padding: 3rem 0 2rem;
+  padding: 1rem 0 2rem;
 
   @media (max-width: 1000px) {
     --columns: 2;
