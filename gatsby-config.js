@@ -34,10 +34,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/src/posts`,
+        name: "posts",
       },
     },
     {
@@ -146,7 +146,7 @@ module.exports = {
       resolve: "gatsby-plugin-mdx",
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/layouts/default.tsx"),
+          default: require.resolve("./src/layouts/page.tsx"),
         },
       },
     },
