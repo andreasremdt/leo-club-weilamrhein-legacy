@@ -69,16 +69,20 @@ const GlobalStyle = createGlobalStyle`
     padding: .4rem 1rem;
   }
 
-  input {
+  input, textarea {
     width: 100%;
     font: inherit;
     outline: none;
+    border-radius: 2px;
+    margin: unset;
+    box-sizing: border-box;
   }
 
   button {
     font: inherit;
     outline: none;
     cursor: pointer;
+    box-sizing: border-box;
   }
 `;
 
