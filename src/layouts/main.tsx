@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PageProps } from "gatsby";
 import styled from "styled-components";
 import * as types from "styled-components/cssprop";
 
@@ -13,14 +12,8 @@ import Sidebar from "../components/sidebar";
 
 type Props = {
   children: React.ReactNode;
-  pageContext: PageProps & FrontmatterProps;
-};
-
-type FrontmatterProps = {
-  frontmatter: {
-    title: string;
-    sidebar: boolean;
-  };
+  title?: string;
+  sidebar: boolean;
 };
 
 const Grid = styled.div`
@@ -33,7 +26,7 @@ const Grid = styled.div`
   }
 `;
 
-function DefaultLayout({ pageContext, children }: Props) {
+function MainLayout({ title, sidebar = true, children }: Props) {
   return (
     <>
       <GlobalStyle />
@@ -41,11 +34,11 @@ function DefaultLayout({ pageContext, children }: Props) {
       <Navigation />
 
       <Container>
-        <h1>{pageContext.frontmatter.title}</h1>
+        {title && <h1>{title}</h1>}
 
         <Grid>
           <Card as="main">{children}</Card>
-          {pageContext.frontmatter.sidebar && <Sidebar />}
+          {sidebar && <Sidebar />}
         </Grid>
       </Container>
 
@@ -54,4 +47,4 @@ function DefaultLayout({ pageContext, children }: Props) {
   );
 }
 
-export default DefaultLayout;
+export default MainLayout;
