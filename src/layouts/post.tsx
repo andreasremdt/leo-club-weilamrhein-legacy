@@ -23,7 +23,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
-        thumbnail
+        images
         date(formatString: "d. MMMM YYYY", locale: "de")
         category
       }
