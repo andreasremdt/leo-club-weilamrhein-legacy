@@ -36,7 +36,8 @@ const NavLink = styled(Link)`
   padding: 0 1rem;
 
   &:hover,
-  &:focus-visible {
+  &:focus-visible,
+  &.active {
     color: var(--yellow);
   }
 
@@ -105,10 +106,18 @@ function Navigation() {
           <Title>Leo-Club Weil am Rhein</Title>
           <Established>Seit 2009</Established>
         </LogoLink>
-        <NavLink to="/aktionen">Aktionen</NavLink>
-        <NavLink to="/ueber-uns">Über uns</NavLink>
-        <NavLink to="/mitglied-werden">Mitglied werden</NavLink>
-        <NavLink to="/kontakt">Kontakt</NavLink>
+        <NavLink activeClassName="active" to="/aktionen">
+          Aktionen
+        </NavLink>
+        <NavLink activeClassName="active" to="/ueber-uns">
+          Über uns
+        </NavLink>
+        <NavLink activeClassName="active" to="/mitglied-werden">
+          Mitglied werden
+        </NavLink>
+        <NavLink activeClassName="active" to="/kontakt">
+          Kontakt
+        </NavLink>
       </NavContainer>
     </Nav>
   );
