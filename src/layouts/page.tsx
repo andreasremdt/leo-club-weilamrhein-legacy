@@ -2,6 +2,7 @@ import * as React from "react";
 import { PageProps } from "gatsby";
 
 import MainLayout from "./main";
+import Card from "../components/card";
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ function PageLayout({ pageContext, children }: Props) {
 
   return (
     <MainLayout title={title} sidebar={sidebar}>
-      {children}
+      <Card as="main">{children}</Card>
     </MainLayout>
   );
 }

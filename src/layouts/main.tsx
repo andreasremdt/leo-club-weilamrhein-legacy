@@ -5,10 +5,9 @@ import * as types from "styled-components/cssprop";
 import Navigation from "../components/navigation";
 import TopHeader from "../components/top-header";
 import Container from "../components/container";
-import Card from "../components/card";
-import GlobalStyle from "../components/global-style";
 import Footer from "../components/footer";
 import Sidebar from "../components/sidebar";
+import GlobalStyles from "../styles/global-styles";
 
 type Props = {
   children: React.ReactNode;
@@ -29,17 +28,21 @@ const Grid = styled.div`
 function MainLayout({ title, sidebar = true, children }: Props) {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles />
       <TopHeader />
       <Navigation />
 
       <Container>
         {title && <h1>{title}</h1>}
 
-        <Grid>
-          <Card as="main">{children}</Card>
-          {sidebar && <Sidebar />}
-        </Grid>
+        {sidebar ? (
+          <Grid>
+            {children}
+            {sidebar && <Sidebar />}
+          </Grid>
+        ) : (
+          children
+        )}
       </Container>
 
       <Footer />

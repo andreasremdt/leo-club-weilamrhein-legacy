@@ -84,6 +84,21 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     box-sizing: border-box;
   }
+
+  figure {
+    margin: unset;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    aspect-ratio: 16/9;
+  }
 `;
 
 export default GlobalStyle;
