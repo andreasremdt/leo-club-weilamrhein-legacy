@@ -46,6 +46,8 @@ const Wrapper = styled.footer`
   background-color: white;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 5rem;
+  position: sticky;
+  top: 100vh;
 `;
 
 const InnerWrapper = styled(Container)`

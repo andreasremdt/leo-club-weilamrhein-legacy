@@ -15,12 +15,19 @@ const GlobalStyle = createGlobalStyle`
     --font-serif: Lora, ui-serif, Georgia, serif;
   }
 
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    height: 100%;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
+    height: 100%;
   }
 
   body {
     margin: unset;
+    height: 100%;
     font: 400 15px/1.8 var(--font-serif);
     color: var(--gray-500);
     background-color: var(--gray-100);
