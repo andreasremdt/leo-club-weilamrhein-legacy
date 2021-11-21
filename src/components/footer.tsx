@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import Container from "./container";
+import ShortPostPreviews from "./short-post-previews";
 import Title from "./title";
 import useSocialLinks from "../hooks/use-social-links";
 
@@ -140,7 +141,9 @@ function Footer() {
           </p>
         </section>
         <section>
-          <Title>Aktionen</Title>
+          <Title>Aktuelles</Title>
+
+          <ShortPostPreviews />
         </section>
         <section>
           <Title>Galerie</Title>

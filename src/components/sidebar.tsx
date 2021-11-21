@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 
 import Card from "./card";
 import Title from "./title";
+import ShortPostPreviews from "../components/short-post-previews";
 import useSocialLinks from "../hooks/use-social-links";
 
 const Wrapper = styled.aside`
@@ -103,6 +104,8 @@ function Sidebar() {
         `}
       >
         <Title>Aktuelles</Title>
+
+        <ShortPostPreviews />
       </Card>
 
       <Card size="small">
