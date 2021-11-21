@@ -2,6 +2,7 @@ import * as React from "react";
 import styled, { css, keyframes } from "styled-components";
 
 import Input from "./input";
+import Button from "./button";
 
 const loadingAnimation = keyframes`
   from {
@@ -17,35 +18,6 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-`;
-
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 1 / span 2;
-  background-color: var(--yellow);
-  text-transform: uppercase;
-  font: 600 14px var(--font-sans);
-  border: unset;
-  border-radius: 2px;
-  height: 44px;
-  padding: 0 1rem;
-  transition: background-color 0.1s linear, color 0.1s linear,
-    opacity 0.1s linear;
-
-  &:disabled {
-    cursor: not-allowed;
-    color: inherit;
-    opacity: 0.5;
-  }
-
-  &:not(:disabled):hover,
-  &:not(:disabled):focus-visible {
-    outline: none;
-    background-color: var(--gray-500);
-    color: white;
-  }
 `;
 
 const ButtonIcon = styled.svg<{
@@ -144,7 +116,13 @@ function ContactForm() {
         `}
       />
 
-      <Button type="submit" disabled={buttonDisabled}>
+      <Button
+        css={`
+          grid-column: 1 / span 2;
+        `}
+        type="submit"
+        disabled={buttonDisabled}
+      >
         <ButtonIcon width={20} height={20} $loading={status === Status.LOADING}>
           <use xlinkHref={`/symbol-defs.svg#${getButtonText()[0]}`} />
         </ButtonIcon>
