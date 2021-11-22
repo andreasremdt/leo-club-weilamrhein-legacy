@@ -3,9 +3,11 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 
 import Container from "./container";
-import ShortPostPreviews from "./short-post-previews";
+import NavLink from "./nav-link";
+import PostPreview from "./post-preview";
 import Title from "./title";
 import useSocialLinks from "../hooks/use-social-links";
+import useShortPostList from "../hooks/use-short-post-list";
 
 const MENU_LINKS = [
   {
@@ -67,16 +69,6 @@ const InnerWrapper = styled(Container)`
   }
 `;
 
-const NavLink = styled(Link)`
-  transition: color 0.1s linear;
-
-  &:hover,
-  &:focus-visible,
-  &.active {
-    color: var(--yellow);
-  }
-`;
-
 const LowerFooter = styled.div`
   border-top: 1px solid var(--gray-200);
   font: 400 13px var(--font-sans);
@@ -122,6 +114,7 @@ const SocialLink = styled.a`
 
 function Footer() {
   const socialLinks = useSocialLinks();
+  const posts = useShortPostList();
 
   return (
     <Wrapper>
@@ -145,7 +138,9 @@ function Footer() {
         <section>
           <Title>Aktuelles</Title>
 
-          <ShortPostPreviews />
+          {posts.map((post) => (
+            <PostPreview key={post.slug} post={post} variant="short" />
+          ))}
         </section>
         <section>
           <Title>Galerie</Title>

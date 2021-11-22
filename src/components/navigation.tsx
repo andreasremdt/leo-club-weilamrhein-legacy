@@ -106,7 +106,7 @@ function Navigation() {
           <Title>Leo-Club Weil am Rhein</Title>
           <Established>Seit 2009</Established>
         </LogoLink>
-        <NavLink activeClassName="active" to="/aktionen">
+        <NavLink activeClassName="active" to="/aktionen" partiallyActive>
           Aktionen
         </NavLink>
         <NavLink activeClassName="active" to="/ueber-uns">

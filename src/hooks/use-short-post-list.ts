@@ -1,21 +1,15 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-type GatsbyPost = {
+type Post = {
   frontmatter: {
     title: string;
-    date: string;
     category: string;
+    date: string;
   };
   slug: string;
 };
 
-type Post = {
-  title: string;
-  slug: string;
-  date: string;
-};
-
-function useShortPosts() {
+function useShortPostList() {
   const data = useStaticQuery(graphql`
     query ShortPostsQuery {
       allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 2) {
@@ -31,13 +25,9 @@ function useShortPosts() {
     }
   `);
 
-  const posts: Post[] = data?.allMdx?.nodes?.map((post: GatsbyPost) => ({
-    title: post.frontmatter.title,
-    slug: `/aktionen/${post.frontmatter.category}/${post.slug}`,
-    date: `Veröffentlicht am ${post.frontmatter.date}`,
-  }));
+  const posts: Post[] = data.allMdx?.nodes;
 
   return posts;
 }
 
-export default useShortPosts;
+export default useShortPostList;

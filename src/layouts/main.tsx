@@ -12,7 +12,7 @@ import GlobalStyles from "../styles/global-styles";
 type Props = {
   children: React.ReactNode;
   title?: string;
-  sidebar: boolean;
+  sidebar?: boolean;
 };
 
 const Grid = styled.div`

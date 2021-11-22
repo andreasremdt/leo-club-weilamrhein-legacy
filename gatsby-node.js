@@ -1,14 +1,21 @@
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const {
+  createFilePath,
+  createRemoteFileNode,
+} = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
-    query PostsQuery {
+    query PostsAndCategoriesQuery {
       allMdx(sort: { order: DESC, fields: frontmatter___date }) {
+        group(field: frontmatter___category) {
+          fieldValue
+        }
         nodes {
           frontmatter {
             category
+            images
           }
           slug
           id
@@ -24,6 +31,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
   }
 
+  // Create all post pages.
   const posts = result.data?.allMdx?.nodes;
 
   posts.forEach((post) => {
@@ -35,19 +43,53 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
+  // Create pages for all categories.
+  const categories = result.data?.allMdx?.group;
+
+  categories.forEach((category) => {
+    createPage({
+      path: `/aktionen/${category.fieldValue}`,
+      component: require.resolve("./src/templates/categories.tsx"),
+      context: {
+        category: category.fieldValue,
+      },
+    });
+  });
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+exports.onCreateNode = async ({
+  node,
+  actions,
+  store,
+  cache,
+  createNodeId,
+}) => {
+  const { createNodeField, createNode } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
+  if (node.internal.type === "Mdx" && node.frontmatter.testingImg) {
+    console.log(node.frontmatter.images);
+    const images = node.frontmatter.images.map(
+      (image) =>
+        `https://res.cloudinary.com/leoclub/image/upload/t_fullscreen,q_75/${node.frontmatter.category}/${image}`
+    );
 
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
+    let t = [];
+    for (let image of images) {
+      const fileNode = await createRemoteFileNode({
+        url: image, // string that points to the URL of the image
+        parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+        createNode, // helper function in gatsby-node to generate the node
+        createNodeId, // helper function in gatsby-node to generate the node id
+        cache, // Gatsby's cache
+        store, // Gatsby's Redux store
+      });
+
+      if (fileNode) {
+        t.push(fileNode);
+      }
+    }
+    createNodeField({ node, name: "localFile", value: t });
   }
 };
 

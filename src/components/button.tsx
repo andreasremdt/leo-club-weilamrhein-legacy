@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Element = styled.button<{ $variant: string }>`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;

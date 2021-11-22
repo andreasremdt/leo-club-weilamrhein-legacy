@@ -1,11 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 
 import Card from "./card";
 import Title from "./title";
-import ShortPostPreviews from "../components/short-post-previews";
+import NavLink from "./nav-link";
+import PostPreview from "./post-preview";
 import useSocialLinks from "../hooks/use-social-links";
+import useShortPostList from "../hooks/use-short-post-list";
 
 const Wrapper = styled.aside`
   flex-basis: 330px;
@@ -31,18 +32,9 @@ const SocialLink = styled.a`
   }
 `;
 
-const NavLink = styled(Link)`
-  transition: color 0.1s linear;
-
-  &:hover,
-  &:focus-visible,
-  &.active {
-    color: var(--yellow);
-  }
-`;
-
 function Sidebar() {
   const socialLinks = useSocialLinks();
+  const posts = useShortPostList();
 
   return (
     <Wrapper>
@@ -105,7 +97,9 @@ function Sidebar() {
       >
         <Title>Aktuelles</Title>
 
-        <ShortPostPreviews />
+        {posts.map((post) => (
+          <PostPreview key={post.slug} post={post} variant="short" />
+        ))}
       </Card>
 
       <Card size="small">
@@ -125,7 +119,7 @@ function Sidebar() {
             <NavLink to="/aktionen/kinder">Kinder</NavLink>
           </li>
           <li>
-            <NavLink to="/aktionen/neuigkeiten">Neuigkeiten</NavLink>
+            <NavLink to="/aktionen/news">Neuigkeiten</NavLink>
           </li>
         </ul>
       </Card>
