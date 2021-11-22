@@ -44,7 +44,10 @@ function ActivitiesPage({ data }: Props) {
   const posts = data.allMdx?.nodes;
 
   return (
-    <MainLayout title={`Unsere Aktionen (${posts.length})`}>
+    <MainLayout
+      title="Unsere Aktionen"
+      description="Erfahren Sie mehr über unsere zahlreichen Aktionen in Deutschland, Frankreich und der Schweiz."
+    >
       <div>
         {posts.map((post) => (
           <PostPreview post={post} key={post.slug} />

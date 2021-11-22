@@ -52,7 +52,8 @@ function CategoriesTemplate({ pageContext, data }: Props) {
 
   return (
     <MainLayout
-      title={`${CATEGORY_TITLES[pageContext.category]} (${posts.length})`}
+      title={CATEGORY_TITLES[pageContext.category].title}
+      description={CATEGORY_TITLES[pageContext.category].description}
     >
       <div>
         {posts.map((post) => (

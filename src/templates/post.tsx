@@ -19,6 +19,7 @@ type Props = {
         category: string;
       };
       body: string;
+      excerpt: string;
     };
   };
 };
@@ -137,6 +138,7 @@ export const query = graphql`
         category
       }
       body
+      excerpt(pruneLength: 200)
     }
   }
 `;
@@ -146,7 +148,15 @@ function PostLayout({ data }: Props) {
   const thumbnail = post.frontmatter.images?.[0];
 
   return (
-    <MainLayout sidebar={true}>
+    <MainLayout
+      title={post.frontmatter.title}
+      description={post.excerpt}
+      showTitle={false}
+      image={
+        thumbnail && generateImageUrl(thumbnail, post.frontmatter.category, 800)
+      }
+      sidebar={true}
+    >
       <Card
         as="main"
         css={`

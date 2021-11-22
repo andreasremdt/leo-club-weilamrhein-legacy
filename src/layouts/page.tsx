@@ -10,15 +10,16 @@ type Props = {
     frontmatter: {
       title: string;
       sidebar: boolean;
+      description: string;
     };
   };
 };
 
 function PageLayout({ pageContext, children }: Props) {
-  const { title, sidebar } = pageContext.frontmatter;
+  const { title, sidebar, description } = pageContext.frontmatter;
 
   return (
-    <MainLayout title={title} sidebar={sidebar}>
+    <MainLayout title={title} description={description} sidebar={sidebar}>
       <Card as="main">{children}</Card>
     </MainLayout>
   );

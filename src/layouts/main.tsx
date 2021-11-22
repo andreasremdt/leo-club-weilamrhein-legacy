@@ -8,10 +8,14 @@ import Container from "../components/container";
 import Footer from "../components/footer";
 import Sidebar from "../components/sidebar";
 import GlobalStyles from "../styles/global-styles";
+import Seo from "../components/seo";
 
 type Props = {
   children: React.ReactNode;
   title?: string;
+  showTitle?: boolean;
+  description?: string;
+  image?: string;
   sidebar?: boolean;
 };
 
@@ -25,15 +29,23 @@ const Grid = styled.div`
   }
 `;
 
-function MainLayout({ title, sidebar = true, children }: Props) {
+function MainLayout({
+  title,
+  sidebar = true,
+  children,
+  description,
+  image,
+  showTitle = true,
+}: Props) {
   return (
     <>
       <GlobalStyles />
       <TopHeader />
       <Navigation />
+      <Seo title={title} description={description} image={image} />
 
       <Container>
-        {title && <h1>{title}</h1>}
+        {title && showTitle && <h1>{title}</h1>}
 
         {sidebar ? (
           <Grid>

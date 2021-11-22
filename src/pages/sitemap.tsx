@@ -41,7 +41,10 @@ function SitemapPage({ data }: Props) {
   const posts = data.allMdx?.nodes;
 
   return (
-    <MainLayout title="Sitemap">
+    <MainLayout
+      title="Sitemap"
+      description="Hier finden Sie eine Übersicht all unserer Seiten und Berichte."
+    >
       <Card as="main">
         <h2>Seiten</h2>
         <ul>
