@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
+import Banner from "./banner";
 import Container from "./container";
 
 const Nav = styled.nav`
@@ -53,17 +54,6 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Banner = styled.span`
-  background: transparent url(/ribbon-dark.svg) no-repeat center;
-  display: block;
-  text-align: center;
-  color: white;
-  text-transform: uppercase;
-  font: 600 13px var(--font-sans);
-  height: 35px;
-  line-height: 2.2;
-`;
-
 const Title = styled.span`
   color: var(--yellow);
   font-size: 25px;
@@ -102,7 +92,7 @@ function Navigation() {
     <Nav>
       <NavContainer>
         <LogoLink to="/">
-          <Banner>Leo-Clubs</Banner>
+          <Banner variant="dark">Leo-Clubs</Banner>
           <Title>Leo-Club Weil am Rhein</Title>
           <Established>Seit 2009</Established>
         </LogoLink>

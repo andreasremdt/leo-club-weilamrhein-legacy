@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach((post) => {
     createPage({
       path: `/aktionen/${post.frontmatter.category}/${post.slug}`,
-      component: require.resolve("./src/layouts/post.tsx"),
+      component: require.resolve("./src/templates/post.tsx"),
       context: {
         id: post.id,
       },
