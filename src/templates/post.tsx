@@ -1,6 +1,6 @@
 import * as React from "react";
-import { graphql, Link } from "gatsby";
-import styled from "styled-components";
+import { graphql } from "gatsby";
+import styled, { css } from "styled-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Card from "../components/card";
@@ -23,7 +23,7 @@ type Props = {
   };
 };
 
-const Header = styled.header`
+const Header = styled.header<{ $thumbnail: boolean }>`
   --spacing: -1.5rem;
   text-align: center;
   background: transparent url(/leafs.svg) no-repeat;
@@ -33,32 +33,40 @@ const Header = styled.header`
   position: relative;
   background-color: white;
   border-radius: 2px;
-  transform: translateY(-4rem);
+  transform: translateY(
+    ${({ $thumbnail }) => ($thumbnail ? "-4rem" : "-2rem")}
+  );
 
-  &::before,
-  &::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    bottom: 0;
-  }
+  ${({ $thumbnail }) => {
+    if ($thumbnail) {
+      return css`
+        &::before,
+        &::after {
+          content: "";
+          z-index: -1;
+          position: absolute;
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          bottom: 0;
+        }
 
-  &::before {
-    top: calc(var(--spacing) - 2px);
-    left: calc(var(--spacing) + 2px);
-    right: calc(var(--spacing) + 2px);
-  }
+        &::before {
+          top: calc(var(--spacing) - 2px);
+          left: calc(var(--spacing) + 2px);
+          right: calc(var(--spacing) + 2px);
+        }
 
-  &::after {
-    top: var(--spacing);
-    left: var(--spacing);
-    right: var(--spacing);
-  }
+        &::after {
+          top: var(--spacing);
+          left: var(--spacing);
+          right: var(--spacing);
+        }
 
-  @media (max-width: 1000px) {
-    --spacing: -0.5rem;
-  }
+        @media (max-width: 1000px) {
+          --spacing: -0.5rem;
+        }
+      `;
+    }
+  }}
 `;
 
 const Title = styled.h1`
@@ -75,6 +83,7 @@ const Figure = styled.figure`
   --spacing: -3rem;
   order: -1;
   margin: var(--spacing);
+  background-color: var(--gray-500);
 
   @media (max-width: 1000px) {
     --spacing: -1rem;
@@ -134,6 +143,7 @@ export const query = graphql`
 
 function PostLayout({ data }: Props) {
   const post = data?.mdx;
+  const thumbnail = post.frontmatter.images?.[0];
 
   return (
     <MainLayout sidebar={true}>
@@ -144,24 +154,26 @@ function PostLayout({ data }: Props) {
           flex-direction: column;
         `}
       >
-        <Header>
+        <Header $thumbnail={Boolean(thumbnail)}>
           <Banner variant="light">{post.frontmatter.category}</Banner>
           <Title>{post.frontmatter.title}</Title>
           <Date>Veröffentlicht am {post.frontmatter.date}</Date>
         </Header>
 
-        <Figure>
-          <Image
-            src={generateImageUrl(
-              post.frontmatter.images[0],
-              post.frontmatter.category,
-              800
-            )}
-            alt=""
-            width={800}
-            height={450}
-          />
-        </Figure>
+        {thumbnail && (
+          <Figure>
+            <Image
+              src={generateImageUrl(
+                post.frontmatter.images[0],
+                post.frontmatter.category,
+                800
+              )}
+              alt=""
+              width={800}
+              height={450}
+            />
+          </Figure>
+        )}
 
         <MDXRenderer>{post.body}</MDXRenderer>
 
@@ -175,7 +187,7 @@ function PostLayout({ data }: Props) {
           Zurück zu Aktionen
         </Button>
 
-        {post.frontmatter.images.length > 0 && (
+        {post.frontmatter?.images?.length > 0 && (
           <Gallery>
             {post.frontmatter.images.map((image) => (
               <GalleryImage

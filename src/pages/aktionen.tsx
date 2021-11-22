@@ -9,6 +9,7 @@ type PostProp = {
     category: string;
     date: string;
     title: string;
+    images: string[];
   };
   excerpt: string;
   slug: string;
@@ -29,6 +30,7 @@ export const query = graphql`
         frontmatter {
           category
           date(locale: "de", formatString: "d. MMMM YYYY")
+          images
           title
         }
         slug
