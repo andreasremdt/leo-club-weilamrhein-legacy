@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import Card from "../components/card";
 import Banner from "../components/banner";
 import Button from "../components/button";
+import ImageGallery from "../components/image-gallery";
 import MainLayout from "../layouts/main";
 import generateImageUrl from "../utils/image-urls";
 
@@ -102,32 +103,6 @@ const Image = styled.img`
   }
 `;
 
-const Gallery = styled.figure`
-  --columns: 3;
-  --gap: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  gap: var(--gap);
-  margin-top: 3rem;
-
-  @media (max-width: 1000px) {
-    --gap: 1rem;
-  }
-
-  @media (min-width: 800px) and (max-width: 1000px) {
-    --columns: 2;
-  }
-
-  @media (max-width: 600px) {
-    --columns: 2;
-  }
-`;
-
-const GalleryImage = styled.img`
-  object-fit: cover;
-  aspect-ratio: 16/9;
-`;
-
 export const query = graphql`
   query PostQuery($id: String!) {
     mdx(id: { eq: $id }) {
@@ -198,18 +173,7 @@ function PostLayout({ data }: Props) {
         </Button>
 
         {post.frontmatter?.images?.length > 0 && (
-          <Gallery>
-            {post.frontmatter.images.map((image) => (
-              <GalleryImage
-                src={generateImageUrl(image, post.frontmatter.category, 300)}
-                alt=""
-                key={image}
-                loading="lazy"
-                width={300}
-                height={180}
-              />
-            ))}
-          </Gallery>
+          <ImageGallery metadata={post.frontmatter} />
         )}
       </Card>
     </MainLayout>

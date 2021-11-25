@@ -24,7 +24,7 @@ function Seo(props: Props) {
       }
     `
   );
-  console.log(location);
+
   const defaults = data?.site?.siteMetadata;
 
   const title = props.title
