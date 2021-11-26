@@ -54,14 +54,19 @@ const Wrapper = styled.footer`
 
 const InnerWrapper = styled(Container)`
   --columns: 4;
+  --padding: 1.5rem;
 
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 1.5rem;
-  padding: 1rem 0 2rem;
+  gap: var(--padding);
+  padding: 1rem var(--padding) 2rem var(--padding);
 
   @media (max-width: 1000px) {
     --columns: 2;
+  }
+
+  @media (max-width: 800px) {
+    --padding: 1rem;
   }
 
   @media (max-width: 550px) {

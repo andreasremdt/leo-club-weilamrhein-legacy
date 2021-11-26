@@ -29,6 +29,14 @@ const Grid = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  margin: 0 0 0.75rem 0;
+
+  @media (max-width: 800px) {
+    font-size: 24px;
+  }
+`;
+
 function MainLayout({
   title,
   sidebar = true,
@@ -45,7 +53,7 @@ function MainLayout({
       <Seo title={title} description={description} image={image} />
 
       <Container>
-        {title && showTitle && <h1>{title}</h1>}
+        {title && showTitle && <Title>{title}</Title>}
 
         {sidebar ? (
           <Grid>

@@ -34,6 +34,7 @@ const Post = styled(Card)<{ $thumbnail?: boolean }>`
         @media (min-width: 800px) and (max-width: 1000px), (max-width: 500px) {
           display: flex;
           flex-direction: column;
+          align-items: flex-start;
         }
       `;
     }
@@ -50,6 +51,12 @@ const PostTitle = styled.h2`
   &:is(h4) {
     margin: 1.5rem 0 0;
     font-size: 17px;
+  }
+
+  &:is(h2) {
+    @media (max-width: 1000px) {
+      font-size: 20px;
+    }
   }
 `;
 

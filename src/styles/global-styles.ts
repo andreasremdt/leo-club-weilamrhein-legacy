@@ -63,6 +63,9 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 1rem;
+    display: block;
+    white-space: nowrap;
+    overflow-y: auto;
   }
 
   th {

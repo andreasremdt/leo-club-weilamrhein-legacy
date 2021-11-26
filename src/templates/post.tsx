@@ -65,6 +65,7 @@ const Header = styled.header<{ $thumbnail: boolean }>`
 
         @media (max-width: 1000px) {
           --spacing: -0.5rem;
+          transform: translateY(-2rem);
         }
       `;
     }

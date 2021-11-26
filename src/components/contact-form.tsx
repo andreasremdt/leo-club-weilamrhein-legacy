@@ -18,6 +18,10 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: auto;
+  }
 `;
 
 const ButtonIcon = styled.svg<{
@@ -109,16 +113,25 @@ function ContactForm() {
         error="Bitte schreiben etwas mehr Text"
         onValidate={setIsMessageValid}
         styles={css`
-          grid-row: 1 / span 3;
-          grid-column: 2 / -1;
           display: flex;
           flex-direction: column;
+
+          @media (min-width: 1000px) {
+            grid-row: 1 / span 3;
+            grid-column: 2 / -1;
+          }
+
+          @media (max-width: 1000px) {
+            height: 10rem;
+          }
         `}
       />
 
       <Button
         css={`
-          grid-column: 1 / span 2;
+          @media (min-width: 1000px) {
+            grid-column: 1 / span 2;
+          }
         `}
         type="submit"
         disabled={buttonDisabled}
