@@ -32,19 +32,19 @@ module.exports = {
     ],
   },
   plugins: [
-    `gatsby-plugin-image`,
+    "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/posts`,
         name: "posts",
+        path: `${__dirname}/src/posts`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
+        name: "images",
         path: `${__dirname}/src/images`,
       },
     },
@@ -57,28 +57,21 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 630,
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          "gatsby-remark-responsive-iframe",
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-feed",
       options: {
@@ -120,6 +113,16 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/layouts/page.tsx"),
         },
+      },
+    },
+    {
+      resolve: "gatsby-source-cloudinary",
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: "image",
+        maxResults: 100,
       },
     },
   ],
