@@ -106,6 +106,11 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     aspect-ratio: 16/9;
   }
+
+  mark,
+  ::selection {
+    background-color: var(--yellow);
+  }
 `;
 
 export default GlobalStyle;

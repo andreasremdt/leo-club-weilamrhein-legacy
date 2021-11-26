@@ -1,5 +1,12 @@
 import * as React from "react";
+import { connectSearchBox } from "react-instantsearch-dom";
 import styled from "styled-components";
+
+type Props = {
+  refine: (value: string) => void;
+  currentRefinement: string;
+  onFocus: () => void;
+};
 
 const Form = styled.form`
   display: flex;
@@ -13,31 +20,26 @@ const Input = styled.input`
   height: 40px;
 `;
 
-const Button = styled.button`
-  background-color: transparent;
-  border: none;
-  padding: unset;
+const Icon = styled.svg`
   color: var(--gray-300);
-  display: flex;
-
-  &:hover,
-  &:focus-visible {
-    color: var(--gray-500);
-  }
 `;
 
-function SearchForm() {
+function SearchForm({ refine, currentRefinement, onFocus }: Props) {
   return (
     <Form>
-      <Input type="search" name="q" placeholder="Seite durchsuchen..." />
-      <input type="hidden" />
-      <Button type="submit" aria-label="Suchen">
-        <svg width={20} height={20}>
-          <use xlinkHref="/symbol-defs.svg#search" />
-        </svg>
-      </Button>
+      <Input
+        aria-label="Seite durchsuchen"
+        type="text"
+        placeholder="Seite durchsuchen..."
+        value={currentRefinement}
+        onFocus={onFocus}
+        onChange={(evt) => refine(evt.target.value)}
+      />
+      <Icon width={20} height={20} aria-hidden={true}>
+        <use xlinkHref="/symbol-defs.svg#search" />
+      </Icon>
     </Form>
   );
 }
 
-export default SearchForm;
+export default connectSearchBox(SearchForm);

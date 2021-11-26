@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import SearchForm from "./search-form";
+import Search from "./search";
 import Container from "./container";
 import useSocialLinks from "../hooks/use-social-links";
 
@@ -60,7 +60,7 @@ function Navigation() {
           ))}
         </List>
 
-        <SearchForm />
+        <Search />
       </Container>
     </Header>
   );
