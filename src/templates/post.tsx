@@ -8,6 +8,7 @@ import Banner from "../components/banner";
 import Button from "../components/button";
 import ImageGallery from "../components/image-gallery";
 import MainLayout from "../layouts/main";
+import formatDate from "../utils/format-date";
 import generateImageUrl from "../utils/image-urls";
 
 type Props = {
@@ -77,7 +78,7 @@ const Title = styled.h1`
   margin: 1.5rem 0 0;
 `;
 
-const Date = styled.span`
+const Date = styled.time`
   color: var(--gray-400);
   font-size: 14px;
 `;
@@ -110,7 +111,7 @@ export const query = graphql`
       frontmatter {
         title
         images
-        date(formatString: "d. MMMM YYYY", locale: "de")
+        date
         category
       }
       body
@@ -143,7 +144,9 @@ function PostLayout({ data }: Props) {
         <Header $thumbnail={Boolean(thumbnail)}>
           <Banner variant="light">{post.frontmatter.category}</Banner>
           <Title>{post.frontmatter.title}</Title>
-          <Date>Veröffentlicht am {post.frontmatter.date}</Date>
+          <Date dateTime={post.frontmatter.date}>
+            Veröffentlicht am {formatDate(post.frontmatter.date)}
+          </Date>
         </Header>
 
         {thumbnail && (

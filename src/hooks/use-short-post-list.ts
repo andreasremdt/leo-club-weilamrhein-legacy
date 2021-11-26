@@ -16,7 +16,7 @@ function useShortPostList() {
         nodes {
           frontmatter {
             title
-            date(locale: "de", formatString: "d. MMMM YYYY")
+            date
             category
           }
           slug

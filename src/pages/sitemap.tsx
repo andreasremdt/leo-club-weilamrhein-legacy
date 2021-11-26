@@ -4,6 +4,7 @@ import * as React from "react";
 import Card from "../components/card";
 import NavLink from "../components/nav-link";
 import MainLayout from "../layouts/main";
+import formatDate from "../utils/format-date";
 
 type Post = {
   frontmatter: {
@@ -28,7 +29,7 @@ export const query = graphql`
       nodes {
         frontmatter {
           category
-          date(locale: "de", formatString: "d. MMMM YYYY")
+          date
           title
         }
         slug
@@ -96,7 +97,7 @@ function SitemapPage({ data }: Props) {
               <NavLink
                 to={`/aktionen/${post.frontmatter.category}/${post.slug}`}
               >
-                {post.frontmatter.date} - {post.frontmatter.title}
+                {formatDate(post.frontmatter.date)} - {post.frontmatter.title}
               </NavLink>
             </li>
           ))}

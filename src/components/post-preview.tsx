@@ -5,6 +5,7 @@ import Card from "./card";
 import NavLink from "./nav-link";
 import Button from "./button";
 import generateImageUrl from "../utils/image-urls";
+import formatDate from "../utils/format-date";
 import fancyImageStyles from "../styles/fancy-image";
 
 type Props = {
@@ -60,7 +61,7 @@ const PostTitle = styled.h2`
   }
 `;
 
-const PostDate = styled.span`
+const PostDate = styled.time`
   color: var(--gray-400);
   font-size: 14px;
 `;
@@ -114,7 +115,9 @@ function PostPreview({ post, variant = "default" }: Props) {
             {post.frontmatter.title}
           </NavLink>
         </PostTitle>
-        <PostDate>Veröffentlicht am {post.frontmatter.date}</PostDate>
+        <PostDate dateTime={post.frontmatter.date}>
+          Veröffentlicht am {formatDate(post.frontmatter.date)}
+        </PostDate>
       </article>
     );
   }
@@ -146,7 +149,9 @@ function PostPreview({ post, variant = "default" }: Props) {
         </Figure>
       )}
 
-      <PostDate>Veröffentlicht am {post.frontmatter.date}</PostDate>
+      <PostDate dateTime={post.frontmatter.date}>
+        Veröffentlicht am {formatDate(post.frontmatter.date)}
+      </PostDate>
       <p>{post.excerpt}</p>
       <Button
         to={`/aktionen/${post.frontmatter.category}/${post.slug}`}
