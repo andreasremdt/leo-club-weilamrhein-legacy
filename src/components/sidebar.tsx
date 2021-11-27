@@ -44,7 +44,7 @@ function Sidebar() {
           margin-bottom: 1.5rem;
         `}
       >
-        <Title>Über uns</Title>
+        <Title as="h2">Über uns</Title>
         <p
           css={`
             text-align: center;
@@ -61,7 +61,7 @@ function Sidebar() {
           margin-bottom: 1.5rem;
         `}
       >
-        <Title>Netzwerke</Title>
+        <Title as="h2">Netzwerke</Title>
         <p
           css={`
             text-align: center;
@@ -95,7 +95,7 @@ function Sidebar() {
           margin-bottom: 1.5rem;
         `}
       >
-        <Title>Aktuelles</Title>
+        <Title as="h2">Aktuelles</Title>
 
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} variant="short" />
@@ -103,7 +103,7 @@ function Sidebar() {
       </Card>
 
       <Card size="small">
-        <Title>Kategorien</Title>
+        <Title as="h2">Kategorien</Title>
 
         <ul>
           <li>
