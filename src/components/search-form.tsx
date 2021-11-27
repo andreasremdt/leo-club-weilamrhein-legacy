@@ -35,7 +35,7 @@ function SearchForm({ refine, currentRefinement, onFocus }: Props) {
         onFocus={onFocus}
         onChange={(evt) => refine(evt.target.value)}
       />
-      <Icon width={20} height={20} aria-hidden={true}>
+      <Icon width={22} height={22} aria-hidden={true}>
         <use xlinkHref="/symbol-defs.svg#search" />
       </Icon>
     </Form>

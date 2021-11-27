@@ -48,6 +48,10 @@ const SkipToContent = styled.a`
   top: 0;
   left: 0;
 
+  svg {
+    margin-left: 5px;
+  }
+
   &:hover {
     text-decoration: underline;
   }
@@ -70,7 +74,12 @@ function Navigation() {
           position: relative;
         `}
       >
-        <SkipToContent href="#content">Zum Inhalt springen</SkipToContent>
+        <SkipToContent href="#content">
+          Zum Inhalt springen{" "}
+          <svg aria-hidden="true" width={20} height={20}>
+            <use xlinkHref="/symbol-defs.svg#arrow-down" />
+          </svg>
+        </SkipToContent>
         <List>
           {socialLinks.map((link) => (
             <li key={link.icon}>
