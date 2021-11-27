@@ -107,16 +107,16 @@ function Sidebar() {
 
         <ul>
           <li>
-            <NavLink to="/aktionen/begegnungen">Begegnungen</NavLink>
+            <NavLink to="/aktionen/begegnungen/">Begegnungen</NavLink>
           </li>
           <li>
-            <NavLink to="/aktionen/weitere">Weitere</NavLink>
+            <NavLink to="/aktionen/weitere/">Weitere</NavLink>
           </li>
           <li>
-            <NavLink to="/aktionen/pflegeheim">Pflegeheim</NavLink>
+            <NavLink to="/aktionen/pflegeheim/">Pflegeheim</NavLink>
           </li>
           <li>
-            <NavLink to="/aktionen/kinder">Kinder</NavLink>
+            <NavLink to="/aktionen/kinder/">Kinder</NavLink>
           </li>
           <li>
             <NavLink to="/aktionen/news">Neuigkeiten</NavLink>

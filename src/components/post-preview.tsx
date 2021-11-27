@@ -111,7 +111,7 @@ function PostPreview({ post, variant = "default" }: Props) {
     return (
       <article>
         <PostTitle as="h4">
-          <NavLink to={`/aktionen/${post.frontmatter.category}/${post.slug}`}>
+          <NavLink to={`/aktionen/${post.frontmatter.category}/${post.slug}/`}>
             {post.frontmatter.title}
           </NavLink>
         </PostTitle>
@@ -132,7 +132,7 @@ function PostPreview({ post, variant = "default" }: Props) {
       $thumbnail={Boolean(thumbnail)}
     >
       <PostTitle>
-        <NavLink to={`/aktionen/${post.frontmatter.category}/${post.slug}`}>
+        <NavLink to={`/aktionen/${post.frontmatter.category}/${post.slug}/`}>
           {post.frontmatter.title}
         </NavLink>
       </PostTitle>
@@ -154,7 +154,7 @@ function PostPreview({ post, variant = "default" }: Props) {
       </PostDate>
       <p>{post.excerpt}</p>
       <Button
-        to={`/aktionen/${post.frontmatter.category}/${post.slug}`}
+        to={`/aktionen/${post.frontmatter.category}/${post.slug}/`}
         variant="text"
         css={`
           justify-self: start;

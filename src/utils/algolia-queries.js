@@ -26,7 +26,7 @@ const queries = [
         title: node.frontmatter.title,
         content: node.excerpt,
         date: node.frontmatter.date,
-        slug: `/aktionen/${node.frontmatter.category}/${node.slug}`,
+        slug: `/aktionen/${node.frontmatter.category}/${node.slug}/`,
       }));
     },
     indexName: "posts",

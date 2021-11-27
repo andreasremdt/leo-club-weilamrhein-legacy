@@ -167,7 +167,7 @@ function PostLayout({ data }: Props) {
         <MDXRenderer>{post.body}</MDXRenderer>
 
         <Button
-          to="/aktionen"
+          to="/aktionen/"
           variant="text"
           css={`
             align-self: flex-start;

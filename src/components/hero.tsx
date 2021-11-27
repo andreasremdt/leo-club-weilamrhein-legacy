@@ -84,7 +84,7 @@ function Hero() {
           dem Dreiländereck, dessen Mitglieder sich für Menschen mit
           Behinderung, benachteiligte Kinder und Heimbewohner einsetzt.
         </p>
-        <Button to="/ueber-uns">Erfahre mehr über uns</Button>
+        <Button to="/ueber-uns/">Erfahre mehr über uns</Button>
       </Figcaption>
     </Figure>
   );

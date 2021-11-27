@@ -16,31 +16,31 @@ const MENU_LINKS = [
   },
   {
     title: "Aktionen",
-    href: "/aktionen",
+    href: "/aktionen/",
   },
   {
     title: "Über uns",
-    href: "/ueber-uns",
+    href: "/ueber-uns/",
   },
   {
     title: "Mitglied werden",
-    href: "/mitglied-werden",
+    href: "/mitglied-werden/",
   },
   {
     title: "Kontakt",
-    href: "/kontakt",
+    href: "/kontakt/",
   },
   {
     title: "Impressum",
-    href: "/impressum",
+    href: "/impressum/",
   },
   {
     title: "Datenschutz",
-    href: "/datenschutz",
+    href: "/datenschutz/",
   },
   {
     title: "Sitemap",
-    href: "/sitemap",
+    href: "/sitemap/",
   },
 ];
 

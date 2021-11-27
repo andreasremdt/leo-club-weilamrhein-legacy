@@ -53,40 +53,40 @@ function SitemapPage({ data }: Props) {
             <NavLink to="/">Startseite</NavLink>
           </li>
           <li>
-            <NavLink to="/aktionen">Aktionen</NavLink>
+            <NavLink to="/aktionen/">Aktionen</NavLink>
             <ul>
               <li>
-                <NavLink to="/aktionen/begegnungen">
+                <NavLink to="/aktionen/begegnungen/">
                   Begegnungen mit Menschen mit Behinderung
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/aktionen/kinder">Ausflüge mit Kindern</NavLink>
+                <NavLink to="/aktionen/kinder/">Ausflüge mit Kindern</NavLink>
               </li>
               <li>
-                <NavLink to="/aktionen/pflegeheim">
+                <NavLink to="/aktionen/pflegeheim/">
                   Besuche im Pflegeheim
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/aktionen/weitere">Weitere Aktionen</NavLink>
+                <NavLink to="/aktionen/weitere/">Weitere Aktionen</NavLink>
               </li>
             </ul>
           </li>
           <li>
-            <NavLink to="/ueber-uns">Über Uns</NavLink>
+            <NavLink to="/ueber-uns/">Über Uns</NavLink>
           </li>
           <li>
-            <NavLink to="/mitglied-werden">Mitglied werden</NavLink>
+            <NavLink to="/mitglied-werden/">Mitglied werden</NavLink>
           </li>
           <li>
-            <NavLink to="/kontakt">Kontakt</NavLink>
+            <NavLink to="/kontakt/">Kontakt</NavLink>
           </li>
           <li>
-            <NavLink to="/impressum">Impressum</NavLink>
+            <NavLink to="/impressum/">Impressum</NavLink>
           </li>
           <li>
-            <NavLink to="/datenschutz">Datenschutz</NavLink>
+            <NavLink to="/datenschutz/">Datenschutz</NavLink>
           </li>
         </ul>
 
@@ -95,7 +95,7 @@ function SitemapPage({ data }: Props) {
           {posts.map((post) => (
             <li key={post.slug}>
               <NavLink
-                to={`/aktionen/${post.frontmatter.category}/${post.slug}`}
+                to={`/aktionen/${post.frontmatter.category}/${post.slug}/`}
               >
                 {formatDate(post.frontmatter.date)} - {post.frontmatter.title}
               </NavLink>

@@ -43,7 +43,7 @@ function HomePage() {
             css={`
               margin-top: auto;
             `}
-            to="/ueber-uns"
+            to="/ueber-uns/"
           >
             Mehr erfahren
           </Button>
@@ -59,7 +59,7 @@ function HomePage() {
             css={`
               margin-top: auto;
             `}
-            to="/aktionen"
+            to="/aktionen/"
           >
             Berichte lesen
           </Button>
@@ -75,7 +75,7 @@ function HomePage() {
             css={`
               margin-top: auto;
             `}
-            to="/mitglied-werden"
+            to="/mitglied-werden/"
           >
             Mitglied werden
           </Button>
@@ -131,9 +131,9 @@ function HomePage() {
           <p>
             Hast du Lust, mitzumachen? Noch nicht sicher, worum es wirklich
             geht? Informiere dich über{" "}
-            <Link to="/ueber-uns">unsere Geschichte</Link> oder entdecke{" "}
-            <Link to="/aktionen">unsere Aktionen</Link>. Oder lerne mehr über
-            die <Link to="/mitglied-werden">Mitgliedschaft</Link>.
+            <Link to="/ueber-uns/">unsere Geschichte</Link> oder entdecke{" "}
+            <Link to="/aktionen/">unsere Aktionen</Link>. Oder lerne mehr über
+            die <Link to="/mitglied-werden/">Mitgliedschaft</Link>.
           </p>
         </Card>
       </Grid>
