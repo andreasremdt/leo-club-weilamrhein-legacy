@@ -72,6 +72,10 @@ function ContactForm() {
 
     const formData = new FormData(evt.target as HTMLFormElement);
 
+    if (formData.has("honeypot")) {
+      return;
+    }
+
     setStatus(Status.LOADING);
 
     fetch("/api/form-submit", {
@@ -85,6 +89,29 @@ function ContactForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <label
+        aria-hidden="true"
+        hidden
+        css={`
+          display: none;
+        `}
+        htmlFor="honeypot"
+      >
+        Dieses Feld freilassen
+      </label>
+      <input
+        hidden
+        autoComplete="off"
+        css={`
+          display: none;
+        `}
+        aria-hidden="true"
+        id="honeypot"
+        name="honeypot"
+        type="text"
+        tabIndex={-1}
+      />
+
       <Input
         name="name"
         required
@@ -110,7 +137,7 @@ function ContactForm() {
         required
         minLength={10}
         label="Deine Nachricht"
-        error="Bitte schreiben etwas mehr Text"
+        error="Bitte schreibe min. 10 Buchstaben"
         onValidate={setIsMessageValid}
         styles={css`
           display: flex;
@@ -135,6 +162,7 @@ function ContactForm() {
         `}
         type="submit"
         disabled={buttonDisabled}
+        aria-live="assertive"
       >
         <ButtonIcon width={20} height={20} $loading={status === Status.LOADING}>
           <use xlinkHref={`/symbol-defs.svg#${getButtonText()[0]}`} />

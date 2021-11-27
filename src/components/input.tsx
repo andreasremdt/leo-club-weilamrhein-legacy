@@ -39,7 +39,7 @@ const Textfield = styled.input<{
   }
 `;
 
-const Error = styled.p`
+const Error = styled.span`
   color: var(--red);
   font-size: 12px;
   font-family: var(--font-sans);
@@ -69,7 +69,7 @@ function Input({
     <FormGroup css={styles}>
       {label && (
         <Label htmlFor={name}>
-          {label} {props.required && <span>*</span>}
+          {label} {!props.required && <span>(optional)</span>}
         </Label>
       )}
       <Textfield
@@ -88,7 +88,9 @@ function Input({
         invalid={isErrorVisible && !isValid}
       />
       {isErrorVisible && !isValid && (
-        <Error id={`${name}-error`}>{error}</Error>
+        <Error aria-live="assertive" id={`${name}-error`}>
+          {error}
+        </Error>
       )}
     </FormGroup>
   );
