@@ -52,7 +52,7 @@ function MainLayout({
       <Navigation />
       <Seo title={title} description={description} image={image} />
 
-      <Container>
+      <Container id="content">
         {title && showTitle && <Title>{title}</Title>}
 
         {sidebar ? (

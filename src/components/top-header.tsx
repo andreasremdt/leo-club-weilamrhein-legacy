@@ -12,7 +12,7 @@ const Header = styled.header`
 
 const List = styled.ul`
   list-style: none;
-  margin: unset;
+  margin: 0 0 0 auto;
   padding: unset;
   display: flex;
   align-items: center;
@@ -32,6 +32,32 @@ const Link = styled.a`
   }
 `;
 
+const SkipToContent = styled.a`
+  opacity: 0;
+  background-color: var(--yellow);
+  font: 600 14px var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.025rem;
+  display: flex;
+  padding: 0.3rem 1rem;
+  align-items: center;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+  transform: translateY(-100%);
+  border-radius: 0 0 2px 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 function Navigation() {
   const socialLinks = useSocialLinks();
 
@@ -41,8 +67,10 @@ function Navigation() {
         css={`
           display: flex;
           justify-content: flex-end;
+          position: relative;
         `}
       >
+        <SkipToContent href="#content">Zum Inhalt springen</SkipToContent>
         <List>
           {socialLinks.map((link) => (
             <li key={link.icon}>
