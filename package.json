@@ -21,7 +21,7 @@
     "gatsby-plugin-sharp": "^4.1.4",
     "gatsby-plugin-sitemap": "^5.2.0",
     "gatsby-plugin-styled-components": "^5.2.0",
-    "gatsby-remark-images": "^6.1.4",
+    "gatsby-remark-images": "^6.2.0",
     "gatsby-remark-responsive-iframe": "^5.1.0",
     "gatsby-source-cloudinary": "^0.1.14",
     "gatsby-source-filesystem": "^4.1.3",
