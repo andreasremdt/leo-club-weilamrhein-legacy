@@ -106,7 +106,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
-      social: Social
     }
 
     type Author {
@@ -114,19 +113,17 @@ exports.createSchemaCustomization = ({ actions }) => {
       summary: String
     }
 
-    type Social {
-      twitter: String
-    }
-
-    type MarkdownRemark implements Node {
+    type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
+      images: [File] @link(from: "fields.localFile")
     }
 
     type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
+      images: [String]
     }
 
     type Fields {
