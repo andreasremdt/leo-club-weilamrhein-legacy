@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import styled, { keyframes } from "styled-components";
 
 import generateImageUrl from "../utils/image-urls";
+import CloudinaryImage from "./cloudinary-image";
 
 type ImageGalleryProps = {
   metadata: {
@@ -107,17 +108,15 @@ const Gallery = styled.figure`
   }
 `;
 
-const GalleryImage = styled.img`
-  object-fit: cover;
-  aspect-ratio: 16/9;
-  transition: opacity 0.1s linear;
-`;
-
 const GalleryImageLink = styled.a`
   background-color: var(--yellow);
 
-  &:hover > img,
-  &:focus-visible > img {
+  picture {
+    transition: opacity 0.1s linear;
+  }
+
+  &:hover > picture,
+  &:focus-visible > picture {
     opacity: 0.4;
   }
 `;
@@ -279,12 +278,16 @@ function ImageGallery({ metadata }: ImageGalleryProps) {
               setIsVisible(true);
             }}
           >
-            <GalleryImage
-              src={generateImageUrl(image, metadata.category, 300)}
+            <CloudinaryImage
+              name={image}
+              category={metadata.category}
               alt=""
-              loading="lazy"
               width={300}
-              height={180}
+              height={250}
+              objectFit="cover"
+              css={`
+                aspect-ratio: 16/10;
+              `}
             />
           </GalleryImageLink>
         ))}

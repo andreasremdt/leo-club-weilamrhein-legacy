@@ -10,6 +10,7 @@ import ImageGallery from "../components/image-gallery";
 import MainLayout from "../layouts/main";
 import formatDate from "../utils/format-date";
 import generateImageUrl from "../utils/image-urls";
+import CloudinaryImage from "../components/cloudinary-image";
 
 type Props = {
   data: {
@@ -97,8 +98,6 @@ const Figure = styled.figure`
 const Image = styled.img`
   width: 100%;
   border-radius: 2px 2px 0 0;
-  height: 450px;
-  object-fit: cover;
 
   @media (max-width: 800px) {
     height: 60vw;
@@ -151,15 +150,18 @@ function PostLayout({ data }: Props) {
 
         {thumbnail && (
           <Figure>
-            <Image
-              src={generateImageUrl(
-                post.frontmatter.images[0],
-                post.frontmatter.category,
-                800
-              )}
+            <CloudinaryImage
+              name={post.frontmatter.images[0]}
+              category={post.frontmatter.category}
               alt=""
               width={800}
               height={450}
+              lazy={false}
+              objectFit="cover"
+              css={`
+                border-radius: 2px 2px 0 0;
+                width: 100%;
+              `}
             />
           </Figure>
         )}

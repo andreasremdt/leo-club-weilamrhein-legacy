@@ -1,8 +1,3 @@
-const {
-  createFilePath,
-  createRemoteFileNode,
-} = require(`gatsby-source-filesystem`);
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
@@ -58,41 +53,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 };
 
-exports.onCreateNode = async ({
-  node,
-  actions,
-  store,
-  cache,
-  createNodeId,
-}) => {
-  const { createNodeField, createNode } = actions;
-
-  if (node.internal.type === "Mdx" && node.frontmatter.testingImg) {
-    console.log(node.frontmatter.images);
-    const images = node.frontmatter.images.map(
-      (image) =>
-        `https://res.cloudinary.com/leoclub/image/upload/t_fullscreen,q_75/${node.frontmatter.category}/${image}`
-    );
-
-    let t = [];
-    for (let image of images) {
-      const fileNode = await createRemoteFileNode({
-        url: image, // string that points to the URL of the image
-        parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
-        createNode, // helper function in gatsby-node to generate the node
-        createNodeId, // helper function in gatsby-node to generate the node id
-        cache, // Gatsby's cache
-        store, // Gatsby's Redux store
-      });
-
-      if (fileNode) {
-        t.push(fileNode);
-      }
-    }
-    createNodeField({ node, name: "localFile", value: t });
-  }
-};
-
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
 
@@ -111,23 +71,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Author {
       name: String
       summary: String
-    }
-
-    type Mdx implements Node {
-      frontmatter: Frontmatter
-      fields: Fields
-      images: [File] @link(from: "fields.localFile")
-    }
-
-    type Frontmatter {
-      title: String
-      description: String
-      date: Date @dateformat
-      images: [String]
-    }
-
-    type Fields {
-      slug: String
     }
   `);
 };

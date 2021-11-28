@@ -7,6 +7,7 @@ import Button from "./button";
 import generateImageUrl from "../utils/image-urls";
 import formatDate from "../utils/format-date";
 import fancyImageStyles from "../styles/fancy-image";
+import CloudinaryImage from "./cloudinary-image";
 
 type Props = {
   variant?: "default" | "short";
@@ -69,6 +70,10 @@ const PostDate = styled.time`
 const Figure = styled.figure`
   background-color: var(--gray-500);
 
+  @media (min-width: 1000px) {
+    width: 300px;
+  }
+
   @media (min-width: 1000px), (min-width: 500px) and (max-width: 800px) {
     grid-row: 1 / 6;
     margin: -1rem 0 -1rem -1rem;
@@ -77,33 +82,22 @@ const Figure = styled.figure`
   @media (min-width: 800px) and (max-width: 1000px), (max-width: 500px) {
     order: -1;
     margin: -1rem -1rem 1rem -1rem;
+    width: calc(100% + 2rem);
   }
-
-  ${fancyImageStyles}
-`;
-
-const Image = styled.img`
-  --width: 20vw;
-  height: 320px;
-  width: var(--width);
-  object-fit: cover;
 
   @media (min-width: 800px) and (max-width: 1000px) {
-    width: 100%;
-  }
-
-  @media (min-width: 1000px) {
-    max-width: 300px;
+    height: 40vw;
   }
 
   @media (min-width: 500px) and (max-width: 800px) {
-    --width: 35vw;
+    width: 30vw;
   }
 
   @media (max-width: 500px) {
-    width: 100%;
-    height: 60vw;
+    height: 80vw;
   }
+
+  ${fancyImageStyles}
 `;
 
 function PostPreview({ post, variant = "default" }: Props) {
@@ -139,12 +133,17 @@ function PostPreview({ post, variant = "default" }: Props) {
 
       {thumbnail && (
         <Figure>
-          <Image
-            src={generateImageUrl(thumbnail, post.frontmatter.category, 500)}
+          <CloudinaryImage
+            name={thumbnail}
+            category={post.frontmatter.category}
             alt={post.frontmatter.title}
-            width={300}
-            height={300}
-            loading="lazy"
+            width={600}
+            height={600}
+            objectFit="cover"
+            css={`
+              width: 100%;
+              height: 100%;
+            `}
           />
         </Figure>
       )}

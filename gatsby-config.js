@@ -32,7 +32,6 @@ module.exports = {
     ],
   },
   plugins: [
-    "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-source-filesystem",
@@ -56,22 +55,6 @@ module.exports = {
         queries: require("./src/utils/algolia-queries"),
       },
     },
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 630,
-            },
-          },
-          "gatsby-remark-responsive-iframe",
-        ],
-      },
-    },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-feed",
       options: {
@@ -113,16 +96,6 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve("./src/layouts/page.tsx"),
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-cloudinary",
-      options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        resourceType: "image",
-        maxResults: 100,
       },
     },
   ],

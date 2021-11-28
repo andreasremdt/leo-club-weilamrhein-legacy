@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
 
 import Button from "./button";
 import fancyImageStyles from "../styles/fancy-image";
+import CloudinaryImage from "./cloudinary-image";
 
 const Figure = styled.figure`
   border-radius: 2px;
@@ -12,7 +12,7 @@ const Figure = styled.figure`
 
   ${fancyImageStyles}
 
-  @media (min-width: 650px) {
+  @media (min-width: 800px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +28,7 @@ const Figcaption = styled.figcaption`
   padding: 1.5rem 1rem;
   background-color: white;
 
-  @media (min-width: 650px) {
+  @media (min-width: 800px) {
     padding: 2rem;
     position: absolute;
     background: rgba(255, 255, 255, 0.8);
@@ -51,30 +51,17 @@ const Title = styled.h1`
 `;
 
 function Hero() {
-  const data = useStaticQuery(graphql`
-    query HeroImage {
-      cloudinaryMedia(public_id: { eq: "pflegeheim/20-01" }) {
-        secure_url
-      }
-    }
-  `);
-
-  const heroImage = data.cloudinaryMedia?.secure_url;
-
   return (
     <Figure>
-      <img
-        src={heroImage}
+      <CloudinaryImage
+        name="20-01.jpg"
+        category="pflegeheim"
         alt="Leo-Mitglieder verteilen Rosen im Weiler Pflegeheim"
+        width={1200}
         height={580}
+        lazy={false}
         css={`
-          height: 600px;
-          object-fit: cover;
-          width: 100%;
-
-          @media (max-width: 650px) {
-            height: 50vw;
-          }
+          max-height: 600px;
         `}
       />
       <Figcaption>
