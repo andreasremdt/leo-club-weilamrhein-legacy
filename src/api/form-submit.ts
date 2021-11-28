@@ -5,9 +5,11 @@ export default function formHandler(
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  const { name, email, phone, message } = req.body;
+  const { name, email, phone, message, honeypot } = req.body;
 
-  if (!name || !email || !message) {
+  if (honeypot) {
+    return res.status(200).json({ status: "ok" });
+  } else if (!name || !email || !message) {
     res.status(400).json({ message: "Form data missing." });
   } else {
     const body = {

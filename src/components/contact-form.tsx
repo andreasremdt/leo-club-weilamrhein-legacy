@@ -51,8 +51,7 @@ function ContactForm() {
   const [isMessageValid, setIsMessageValid] = React.useState(false);
   const [status, setStatus] = React.useState(Status.IDLE);
 
-  const buttonDisabled =
-    !isNameValid || !isEmailValid || !isMessageValid || status !== Status.IDLE;
+  const buttonDisabled = status === Status.LOADING || status === Status.SUCCESS;
 
   function getButtonText() {
     switch (status) {
@@ -72,19 +71,17 @@ function ContactForm() {
 
     const formData = new FormData(evt.target as HTMLFormElement);
 
-    if (formData.has("honeypot")) {
-      return;
-    }
-
     setStatus(Status.LOADING);
 
-    fetch("/api/form-submit", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then(() => setStatus(Status.SUCCESS))
-      .catch(() => setStatus(Status.ERROR));
+    if (isNameValid && isEmailValid && isMessageValid) {
+      fetch("/api/form-submit", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then(() => setStatus(Status.SUCCESS))
+        .catch(() => setStatus(Status.ERROR));
+    }
   }
 
   return (
@@ -129,7 +126,7 @@ function ContactForm() {
         onValidate={setIsEmailValid}
       />
 
-      <Input name="phone" label="Telefonnummer" />
+      <Input name="phone" label="Telefonnummer" type="tel" />
 
       <Input
         name="message"

@@ -47,6 +47,8 @@ const Error = styled.span`
   position: absolute;
   bottom: -2px;
   right: 0.5rem;
+  display: flex;
+  text-indent: 5px;
 `;
 
 function Input({
@@ -89,6 +91,9 @@ function Input({
       />
       {isErrorVisible && !isValid && (
         <Error aria-live="assertive" id={`${name}-error`}>
+          <svg width={18} height={18} aria-hidden="true">
+            <use xlinkHref="/symbol-defs.svg#error" />
+          </svg>
           {error}
         </Error>
       )}

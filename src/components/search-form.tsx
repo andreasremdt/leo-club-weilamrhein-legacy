@@ -30,6 +30,7 @@ function SearchForm({ refine, currentRefinement, onFocus }: Props) {
       <Input
         aria-label="Seite durchsuchen"
         type="text"
+        enterKeyHint="search"
         placeholder="Seite durchsuchen..."
         value={currentRefinement}
         onFocus={onFocus}
