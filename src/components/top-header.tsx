@@ -21,20 +21,21 @@ const List = styled.ul`
 `;
 
 const Link = styled.a`
-  color: var(--gray-300);
+  color: var(--gray-400);
   margin-right: 0.75rem;
   transition: color 0.1s linear;
   display: flex;
 
   &:hover,
   &:focus-visible {
-    color: var(--gray-500);
+    color: var(--yellow);
   }
 `;
 
 const SkipToContent = styled.a`
   opacity: 0;
   background-color: var(--yellow);
+  color: white;
   font: 600 14px var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.025rem;

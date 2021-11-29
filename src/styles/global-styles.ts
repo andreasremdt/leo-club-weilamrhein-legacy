@@ -2,14 +2,13 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --yellow: rgb(239, 181, 75);
-    --red: rgb(255, 98, 71);
-    --green: rgb(65, 145, 48);
-    --gray-500: rgb(37, 37, 37);
-    --gray-400: rgb(124, 124, 124);
-    --gray-300: rgb(154, 154, 154);
-    --gray-200: rgb(233, 233, 233);
-    --gray-100: rgb(246, 246, 246);
+    --yellow: #B45309;
+    --red: #DC2626;
+    --gray-500: #292524;
+    --gray-400: #57534E;
+    --gray-300: #A8A29E;
+    --gray-200: #E7E5E4;
+    --gray-100: #F5F5F4;
 
     --font-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-serif: Lora, ui-serif, Georgia, serif;
@@ -81,11 +80,13 @@ const GlobalStyle = createGlobalStyle`
 
   input, textarea {
     width: 100%;
-    font: inherit;
+    font-family: inherit;
     outline: none;
     border-radius: 2px;
     margin: unset;
     box-sizing: border-box;
+    color: var(--gray-500);
+    font-size: 1em;
   }
 
   button {
@@ -113,6 +114,7 @@ const GlobalStyle = createGlobalStyle`
   mark,
   ::selection {
     background-color: var(--yellow);
+    color: white;
   }
 `;
 

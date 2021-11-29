@@ -33,6 +33,7 @@ const Element = styled.button<{ $variant: string }>`
 
     return css`
       background-color: var(--yellow);
+      color: white;
       font-size: 14px;
       font-family: var(--font-sans);
       border: unset;

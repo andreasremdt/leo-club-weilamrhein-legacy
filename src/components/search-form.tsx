@@ -21,7 +21,7 @@ const Input = styled.input`
 `;
 
 const Icon = styled.svg`
-  color: var(--gray-300);
+  color: var(--gray-400);
 `;
 
 function SearchForm({ refine, currentRefinement, onFocus }: Props) {
