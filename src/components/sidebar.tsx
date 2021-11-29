@@ -98,7 +98,12 @@ function Sidebar() {
         <Title as="h2">Aktuelles</Title>
 
         {posts.map((post) => (
-          <PostPreview key={post.slug} post={post} variant="short" />
+          <PostPreview
+            key={post.slug}
+            post={post}
+            variant="short"
+            headingLevel="h3"
+          />
         ))}
       </Card>
 

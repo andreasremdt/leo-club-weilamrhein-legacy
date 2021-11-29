@@ -4,13 +4,13 @@ import styled, { css } from "styled-components";
 import Card from "./card";
 import NavLink from "./nav-link";
 import Button from "./button";
-import generateImageUrl from "../utils/image-urls";
 import formatDate from "../utils/format-date";
 import fancyImageStyles from "../styles/fancy-image";
 import CloudinaryImage from "./cloudinary-image";
 
 type Props = {
   variant?: "default" | "short";
+  headingLevel?: "h4" | "h3";
   post: {
     frontmatter: {
       category: string;
@@ -49,11 +49,6 @@ const Post = styled(Card)<{ $thumbnail?: boolean }>`
 
 const PostTitle = styled.h2`
   margin: unset;
-
-  &:is(h4) {
-    margin: 1.5rem 0 0;
-    font-size: 17px;
-  }
 
   &:is(h2) {
     @media (max-width: 1000px) {
@@ -100,11 +95,21 @@ const Figure = styled.figure`
   ${fancyImageStyles}
 `;
 
-function PostPreview({ post, variant = "default" }: Props) {
+function PostPreview({
+  post,
+  variant = "default",
+  headingLevel = "h4",
+}: Props) {
   if (variant === "short") {
     return (
       <article>
-        <PostTitle as="h4">
+        <PostTitle
+          as={headingLevel}
+          css={`
+            font-size: 17px;
+            margin: 1.5rem 0 0;
+          `}
+        >
           <NavLink to={`/aktionen/${post.frontmatter.category}/${post.slug}/`}>
             {post.frontmatter.title}
           </NavLink>
