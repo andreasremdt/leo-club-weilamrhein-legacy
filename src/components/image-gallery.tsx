@@ -281,7 +281,6 @@ function ImageGallery({ metadata }: ImageGalleryProps) {
             <CloudinaryImage
               name={image}
               category={metadata.category}
-              alt=""
               width={300}
               height={250}
               objectFit="cover"

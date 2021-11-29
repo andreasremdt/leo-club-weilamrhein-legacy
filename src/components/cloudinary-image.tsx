@@ -4,7 +4,7 @@ import styled from "styled-components";
 type Props = {
   category: string;
   name: string;
-  alt: string;
+  alt?: string;
   width?: number;
   height?: number;
   lazy?: boolean;
@@ -14,6 +14,7 @@ type Props = {
 const Picture = styled.picture`
   background-color: var(--gray-500);
   display: block;
+  border-radius: 2px;
 `;
 
 const Image = styled.img<{ objectFit: string }>`
@@ -21,6 +22,7 @@ const Image = styled.img<{ objectFit: string }>`
   display: block;
   opacity: 0;
   object-fit: ${({ objectFit }) => objectFit};
+  border-radius: 2px;
 
   &[src] {
     opacity: 1;
@@ -34,7 +36,7 @@ function CloudinaryImage({
   height,
   objectFit = "none",
   lazy = true,
-  alt,
+  alt = "",
   ...props
 }: Props) {
   const pictureRef = React.useRef<HTMLPictureElement>(null);

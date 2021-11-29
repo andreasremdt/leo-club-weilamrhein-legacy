@@ -8,6 +8,8 @@ import PostPreview from "./post-preview";
 import Title from "./title";
 import useSocialLinks from "../hooks/use-social-links";
 import useShortPostList from "../hooks/use-short-post-list";
+import useGalleryImages from "../hooks/use-gallery-images";
+import CloudinaryImage from "./cloudinary-image";
 
 const MENU_LINKS = [
   {
@@ -120,6 +122,7 @@ const SocialLink = styled.a`
 function Footer() {
   const socialLinks = useSocialLinks();
   const posts = useShortPostList();
+  const images = useGalleryImages();
 
   return (
     <Wrapper>
@@ -149,6 +152,36 @@ function Footer() {
         </section>
         <section>
           <Title>Galerie</Title>
+
+          <figure
+            css={`
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 1rem;
+            `}
+          >
+            {images.map((image) => (
+              <Link
+                to={image.url}
+                key={image.name}
+                css={`
+                  &:focus-visible {
+                    outline: 3px solid var(--yellow);
+                    outline-offset: 1px;
+                    border-radius: 1px;
+                  }
+                `}
+                aria-label={`Link zum Artikel "${image.title}`}
+              >
+                <CloudinaryImage
+                  name={image.name}
+                  category={image.category}
+                  width={160}
+                  height={160}
+                />
+              </Link>
+            ))}
+          </figure>
         </section>
         <section>
           <Title>Menü</Title>
