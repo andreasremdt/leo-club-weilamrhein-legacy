@@ -12,7 +12,7 @@
     "@mdx-js/react": "^1.6.22",
     "algoliasearch": "^4.11.0",
     "gatsby": "^4.11.1",
-    "gatsby-plugin-algolia": "^0.24.0",
+    "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-feed": "^4.3.0",
     "gatsby-plugin-manifest": "^4.11.1",
     "gatsby-plugin-mdx": "^3.11.1",
